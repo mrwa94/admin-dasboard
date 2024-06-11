@@ -24,24 +24,27 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
-interface BillboardFormProps {
-  initialData: Billboard | null;
-}
+
 const formSchema = z.object({
   label: z.string().min(1),
   imageUrl: z.string().min(1),
 });
 type FormBillboardValues = z.infer<typeof formSchema>;
 
+interface BillboardFormProps {
+  initialData: Billboard | null;
+}
+
+
+
 const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
   const form = useForm<FormBillboardValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       label: "",
-      imageUrl: " ",
+     imageUrl: " ",
     },
   });
 
@@ -49,8 +52,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
   const [loading, setLoading] = useState(false);
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
-
+ 
   const title = initialData ? "Edit billboard" : "create billboard";
   const description = initialData
     ? "Edit a billboard"
@@ -76,6 +78,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
       }
 
       router.refresh();
+      router.push(`/${params.storeId}/billboards`)
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Something went wrong!");
