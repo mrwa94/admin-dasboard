@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 
-import { BillboardColumns } from "./columns";
+import { CategoriesColumns } from "./columns";
 import { Button } from "@/components/ui/button";
 import { Copy, Edit, MoreHorizontal, Trash, User } from "lucide-react";
 import toast from "react-hot-toast";
@@ -18,7 +18,7 @@ import { useState } from "react";
 import { AlertModal } from "@/components/modals/alert-modal";
 
 interface CellActionProps {
-  data: BillboardColumns;
+  data: CategoriesColumns;
 }
 const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const router = useRouter();
@@ -34,7 +34,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onDelete = async () => {
     try {
       setIsLoading(true);
-      await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
+      await axios.delete(`/api/${params.storeId}/categories/${data.id}`);
       router.refresh();
       toast.success("deleted successful.");
     } catch (error) {
@@ -75,7 +75,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
           <DropdownMenuItem
             onClick={() =>
-              router.push(`/${params.storeId}/billboards/${data.id}`)
+              router.push(`/${params.storeId}/categories/${data.id}`)
             }
             className=" pb-2 "
           >

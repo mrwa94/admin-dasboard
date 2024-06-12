@@ -4,6 +4,7 @@ import prismadb from "@/lib/prismadb";
 
 import { BillboardClient } from "./components/client";
 import { BillboardColumns } from "./components/columns";
+import ApiList from "@/components/ui/api-list";
 
 const Billboards = async ({ params }: { params: { storeId: string } }) => {
   const billboards = await prismadb.billboard.findMany({
@@ -26,8 +27,9 @@ const Billboards = async ({ params }: { params: { storeId: string } }) => {
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6 ">
         <BillboardClient data={formattedBillboards} />
-        <div>{formattedBillboards.length}</div>
       </div>
+    
+   
     </div>
   );
 };

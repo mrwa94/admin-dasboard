@@ -1,16 +1,7 @@
-interface  DashboardPageProps {
-    
-}
+interface DashboardPageProps {}
 
-const DashboardPage = ()=>{
+const DashboardPage = () => {
+  return <div>This is a dashboard page</div>;
+};
 
-
-    return (
-        <div>
-            This is a dashboard page
-        </div>
-    )
-
-}
-
-export default DashboardPage
+export default DashboardPage;
