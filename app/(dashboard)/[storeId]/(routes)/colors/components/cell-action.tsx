@@ -38,7 +38,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
       router.refresh();
       toast.success("deleted successful.");
     } catch (error) {
-      toast.error("something went wrong.");
+      toast.error( "Make sure you delete all product using this Color first  !");
     } finally {
       setIsLoading(false);
       setOpen(false);

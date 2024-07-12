@@ -80,6 +80,7 @@ const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
     }
   };
 
+ 
   //delete
   const onDelete = async () => {
     try {
@@ -90,13 +91,20 @@ const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       router.push("/");
       toast.success("deleted successfully");
     } catch (error) {
-      toast.error("Make sure you delete all product using this sizes first  !");
+      toast.error(
+        "Make sure you delete all product using this Size first  !"
+      );
     } finally {
       setLoading(false);
       setOpen(false);
     }
   };
+
   
+
+
+
+
   return (
     <>
       <AlertModal

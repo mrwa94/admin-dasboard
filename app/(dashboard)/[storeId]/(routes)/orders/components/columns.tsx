@@ -15,14 +15,14 @@ export type OrdersColumns = {
 
 export const Columns: ColumnDef<OrdersColumns>[] = [
   {
-    accessorKey: "name",
+    accessorKey: "products",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          products
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

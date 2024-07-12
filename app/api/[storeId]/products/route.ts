@@ -41,7 +41,7 @@ export async function POST(
     if (!params.storeId) {
       return new NextResponse("store ID is required", { status: 400 });
     }
-    if (!images || !Array.isArray(images) || images.length === 0) {
+    if (!images  || images.length === 0) {
       return new NextResponse("Images are required", { status: 400 });
     }
 
@@ -73,13 +73,13 @@ export async function POST(
         storeId: params.storeId,
         colorId,
         sizeId,
-        // images: {
-        //   createMany: {
-        //     data: images.map((image: { url: string }) => ({
-        //       url: image.url,
-        //     })),
-        //   },
-        // },
+        images: {
+          createMany: {
+            data: images.map((image: { url: string }) => ({
+              url: image.url,
+            })),
+          },
+        },
         
         categoryId,
         isArchived,

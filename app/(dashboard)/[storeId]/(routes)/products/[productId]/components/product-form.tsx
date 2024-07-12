@@ -64,24 +64,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
   colors,
   sizes,
 }) => {
-  const form = useForm<FormProductValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: initialData
-      ? {
-          ...initialData,
-          price: parseFloat(String(initialData?.price)),
-        }
-      : {
-          name: "",
-          images: [],
-          price: 0,
-          categoryId: "",
-          sizeId: "",
-          colorId: "" ,
-          isFeatured: false,
-          isArchived: false,
-        },
-  });
+ 
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -94,6 +77,21 @@ const ProductForm: React.FC<ProductFormProps> = ({
     ? "product updated."
     : "Product created successfully";
   const action = initialData ? "Save changes" : "Create ";
+
+  const form = useForm<FormProductValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: initialData? { ...initialData,price: parseFloat(String(initialData?.price)), }
+      : {
+          name: "",
+          images: [],
+          price: 0,
+          categoryId: "",
+          sizeId: "",
+          colorId: "" ,
+          isFeatured: false,
+          isArchived: false,
+        },
+  });
 
   //post
   const onSubmit = async (data: FormProductValues) => {
@@ -119,7 +117,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
     }
   };
 
-  //delete
+  //delete product from  API
   const onDelete = async () => {
     try {
       setLoading(true);
