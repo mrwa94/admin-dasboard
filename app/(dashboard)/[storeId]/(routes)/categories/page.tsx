@@ -4,7 +4,6 @@ import prismadb from "@/lib/prismadb";
 
 import { CategoriesClient } from "./components/client";
 import { CategoriesColumns } from "./components/columns";
-import { Billboard } from "@prisma/client";
 
 const Categories = async ({ params }: { params: { storeId: string } }) => {
   const categories = await prismadb.category.findMany({

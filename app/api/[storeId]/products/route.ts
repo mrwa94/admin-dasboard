@@ -5,8 +5,10 @@ import { NextResponse } from "next/server";
 //create new products
 
 
+
 export async function POST(
   req: Request,
+
   { params }: { params: { storeId: string } }
 ) {
   try {
@@ -86,8 +88,7 @@ export async function POST(
         isFeatured,
       },
     });
-
-    return NextResponse.json(products);
+   return NextResponse.json(products);
   } catch (error) {
     console.log("[PRODUCT_POST]", error);
     return new NextResponse("Internal error ", { status: 500 });

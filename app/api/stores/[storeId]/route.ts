@@ -26,6 +26,7 @@ export async function PATCH(
       where: {
         id: params.storeId,
         userId,
+       
       },
       data: {
         name,
@@ -63,5 +64,28 @@ export async function DELETE(
   } catch (error) {
     console.log("[STORE_DELETE]", error);
     return new NextResponse("internal server error", { status: 500 });
+  }
+}
+
+export async function GET(
+  req: Request,
+  { params }: { params: { storeId: string } }
+) {
+  try {
+    const body = await req.json();
+    const { name } = body;
+    if (!name) {
+      return new NextResponse("name is required", { status: 400 });
+    }
+
+    const store = await prismadb.store.findUnique({
+      where: {
+        id: params.storeId,
+        name,
+      },
+    });
+    return NextResponse.json(store);
+  } catch (error) {
+    return new NextResponse("Something went wrong", { status: 500 });
   }
 }

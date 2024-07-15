@@ -2,7 +2,7 @@ import prismadb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-//get the Categories
+//get a category
 export async function GET(
   req: Request,
   { params }: { params: { categoryId: string } }

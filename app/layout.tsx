@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 
-import prismadb from '@/lib/prismadb'
 import { ClerkProvider } from "@clerk/nextjs";
 import { ModalProvider } from "@/providers/modal-provider";
 import { ToasterProvider } from "@/providers/toast-provider";
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
-  const store = prismadb.store 
+
   return (
     <ClerkProvider>
       <html lang="en">
