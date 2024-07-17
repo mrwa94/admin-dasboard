@@ -8,7 +8,7 @@ export type SizeColumns = {
   id: string;
   name: string;
   value: string;
-  status: string;
+
 };
 
 export const Columns: ColumnDef<SizeColumns>[] = [
