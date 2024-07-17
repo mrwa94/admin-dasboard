@@ -48,11 +48,7 @@ const formSchema = z.object({
 type FormProductValues = z.infer<typeof formSchema>;
 
 interface ProductFormProps {
-  initialData:
-    | (Product & {
-        images: Image[];
-      })
-    | null;
+  initialData: (Product & { images: Image[] }) | null;
   categories: Category[];
   sizes: Size[];
   colors: Color[];
@@ -64,8 +60,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
   colors,
   sizes,
 }) => {
- 
-
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const params = useParams();
@@ -80,14 +74,19 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
   const form = useForm<FormProductValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData? { ...initialData,price: parseFloat(String(initialData?.price)), }
+    defaultValues: initialData
+      ? {
+          ...initialData,
+          price: parseFloat(String(initialData?.price)),
+          categoryId: initialData.categoryId || "", // Ensure categoryId is not null
+        }
       : {
           name: "",
           images: [],
           price: 0,
           categoryId: "",
           sizeId: "",
-          colorId: "" ,
+          colorId: "",
           isFeatured: false,
           isArchived: false,
         },
