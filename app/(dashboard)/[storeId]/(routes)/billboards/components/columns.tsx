@@ -6,8 +6,8 @@ import CellAction from "./cell-action";
 
 export type BillboardColumns = {
   id: string;
-  amount: number;
-  status: string;
+  label: string;
+  createdAt: string;
 };
 
 export const Columns: ColumnDef<BillboardColumns>[] = [
