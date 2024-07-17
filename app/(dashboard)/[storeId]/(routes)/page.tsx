@@ -49,7 +49,7 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
               <CreditCard className="h-5 w-5 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-lime-700">
+              <div className="text-2xl font-bold">
                 {" "}
                 +{salesCount}
               </div>

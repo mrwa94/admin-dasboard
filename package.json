@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/clerk-sdk-node": "^5.0.10",
@@ -24,6 +25,7 @@
     "@stripe/stripe-js": "^4.1.0",
     "@tanstack/react-table": "^8.17.3",
     "@types/cors": "^2.8.17",
+    "@typescript-eslint/typescript-estree": "^7.16.1",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -36,6 +38,7 @@
     "mongodb": "^6.7.0",
     "next": "^14.2.4",
     "next-cloudinary": "^6.6.2",
+    "next-themes": "^0.3.0",
     "nodemon": "^3.1.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
